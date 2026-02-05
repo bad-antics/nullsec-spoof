@@ -2,12 +2,19 @@
 name = "nullsec-spoof"
 version = "1.0.0"
 edition = "2021"
-authors = ["bad-antics <bad-antics@users.noreply.github.com>"]
-description = "High-performance metadata spoofing toolkit for anti-forensics"
+authors = ["bad-antics <bad-antics@nullsec.dev>"]
+description = "High-performance metadata spoofing toolkit for anti-forensics - Randomize timestamps, MAC addresses, EXIF data, and file attributes"
 license = "GPL-3.0"
 repository = "https://github.com/bad-antics/nullsec-spoof"
+homepage = "https://github.com/bad-antics/nullsec-spoof"
+documentation = "https://docs.rs/nullsec-spoof"
+readme = "README.md"
 keywords = ["security", "forensics", "metadata", "spoofing", "privacy"]
 categories = ["command-line-utilities", "development-tools"]
+exclude = ["target/*", "Cargo.lock"]
+
+[badges]
+maintenance = { status = "actively-developed" }
 
 [dependencies]
 clap = { version = "4.4", features = ["derive"] }
@@ -24,9 +31,13 @@ toml = "0.8"
 colored = "2.1"
 indicatif = "0.17"
 kamadak-exif = "0.5"
-img_parts = "0.3"
+img-parts = "0.3"
 
 [profile.release]
 opt-level = 3
 lto = true
 strip = true
+
+[[bin]]
+name = "nullsec-spoof"
+path = "src/main.rs"
